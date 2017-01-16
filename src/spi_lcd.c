@@ -476,7 +476,7 @@ void init_game(){
 	        		dec += 48;
 	        	    el  += 48;
 	        	    lcdClearDisplay(decodeRgbValue(0, 0, 0));
-	        	    lcdPutS("Prehral si",40,50,0xFFFF, 0);
+	        	    lcdPutS("Vyhral si",40,50,0xFFFF, 0);
 	        	    lcdPutS("Tvoje skore :",35,60,0xFFFF,0);
 	        	    lcdPutCh(dec,105,60,0xFFFF,0);
 	                if(*score >=10){
@@ -504,7 +504,8 @@ void init_game(){
 	  	         	}
 	  	         	if(*score >=10){
 	  	         	lcdPutCh(dec,105,60,0xFFFF,0);
-	  	         	lcdPutCh(el,113,60,0xFFFF,0);}
+	  	         	lcdPutCh(el,113,60,0xFFFF,0);
+	  	         	}
 	  	         	lcdPutS("Pre hranie odznova ",10,70,0xFFFF, 0);
 	  	         	lcdPutS("Stlac reset  ",35,80,0xFFFF, 0);
 
