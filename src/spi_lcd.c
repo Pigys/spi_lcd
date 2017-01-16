@@ -195,7 +195,7 @@ pokial sa nespawne do neobsadenej pozicie (kontroluje,ci sa nespawne do hada ale
         y = rand() % SIZE_OF_WORLD;
     } while (map[x][y] != ' ');
 
-    map[x][y] = 'H';
+    map[x][y] = '@';
 }
 
 void spawnRock(char map[SIZE_OF_WORLD][SIZE_OF_WORLD]) {
@@ -304,7 +304,7 @@ sme nieco zjedli a -1 ak sme narazili.
 	if(map[x][y] == ' ') {
 		return 1;
 	}
-	if(map[x][y] == 'H') {
+	if(map[x][y] == '@') {
 		return 2;
 	}
 	if(map[x][y] == 'X' ) {
@@ -427,11 +427,11 @@ void init_game(){
 	  initWorld(map);
 	  initSnake(map,snake);
 	  spawnFood(map);
-	  map[3][6] = 'H';
+	  map[3][6] = '@';
 	  char str ;
 	  printWorld(map);
 	  int pom = 0;
-
+	  char dec, el,temp;
 
 
 
@@ -466,20 +466,46 @@ void init_game(){
 	         //fflush(stdin);
 	         //direction = 0;
 	         Delays(10);
-	         str = *score;
+
+
+
 	         if(*score == SIZE_OF_SNAKE -1) {
-	        	 lcdClearDisplay(decodeRgbValue(0, 0, 0));
-	        	 lcdPutS("Vyhral si",40,50,0xFFFF, 0);
-	        	 lcdPutS("Pre hranie odznova ",10,60,0xFFFF, 0);
-	        	 lcdPutS("Stlac reset  ",35,70,0xFFFF, 0);
-	             return 0;
+	        		char hodnota = *score;
+	        		dec = hodnota/10;
+	        		el = hodnota % 10;
+	        		dec += 48;
+	        	    el  += 48;
+	        	    lcdClearDisplay(decodeRgbValue(0, 0, 0));
+	        	    lcdPutS("Prehral si",40,50,0xFFFF, 0);
+	        	    lcdPutS("Tvoje skore :",35,60,0xFFFF,0);
+	        	    lcdPutCh(dec,105,60,0xFFFF,0);
+	                if(*score >=10){
+	        	    lcdPutCh(el,113,60,0xFFFF,0);}
+	        	    lcdPutS("Pre hranie odznova ",10,70,0xFFFF, 0);
+	        	    lcdPutS("Stlac reset  ",35,80,0xFFFF, 0);
+	        	    return 0;
 	         }
 
 		     }
 	     }while(endFlag != 1);
+	  	  	  	  	char hodnota = *score;
+	  	         	dec = hodnota/10;
+	  	         	temp = hodnota;
+	  	         	el = hodnota % 10;
 
-	  lcdClearDisplay(decodeRgbValue(0, 0, 0));
-	  lcdPutS("Prehral si",40,50,0xFFFF, 0);
-	  lcdPutS("Pre hranie odznova ",10,60,0xFFFF, 0);
-	  lcdPutS("Stlac reset  ",35,70,0xFFFF, 0);
+	  	         	dec += 48;
+	  	         	el  += 48;
+	  	         	temp +=48;
+	  	         	lcdClearDisplay(decodeRgbValue(0, 0, 0));
+	  	         	lcdPutS("Prehral si",40,50,0xFFFF, 0);
+	  	         	lcdPutS("Tvoje skore :",35,60,0xFFFF,0);
+	  	         	if(*score < 10){
+	  	         	lcdPutCh(temp,105,60,0xFFFF,0);
+	  	         	}
+	  	         	if(*score >=10){
+	  	         	lcdPutCh(dec,105,60,0xFFFF,0);
+	  	         	lcdPutCh(el,113,60,0xFFFF,0);}
+	  	         	lcdPutS("Pre hranie odznova ",10,70,0xFFFF, 0);
+	  	         	lcdPutS("Stlac reset  ",35,80,0xFFFF, 0);
+
 }

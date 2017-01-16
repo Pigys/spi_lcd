@@ -21,7 +21,7 @@
 
 #define SIZE_OF_WORLD 13
 #define NUMBER_OF_ELEMENTS SIZE_OF_WORLD * SIZE_OF_WORLD
-#define SIZE_OF_SNAKE 10
+#define SIZE_OF_SNAKE 15
 #define DM 10 //DISPLAY MULTIPLIER
 #define DM1 15
 char last;
